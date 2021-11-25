@@ -86,7 +86,11 @@ public class GraphTest {
 
     @Test
     void floydWarShall(){
+        String path = "1 -> 0 -> 3";
         setup3();
+        graph.initialize();
+        graph.floydWarshall(4);
+        assertEquals(path,graph.printPath(graph.constructPath(1,3)));
     }
 
     @Test
