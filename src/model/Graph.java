@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.PriorityQueue;
 import java.util.Vector;
 
 public class Graph<K>{
@@ -113,6 +115,39 @@ public class Graph<K>{
         }
     }
 
+
+    public Graph<K> prim(K first){
+        int totalVertex = vertices.size();
+        Vertice<K> vOrigin = this.searchVertice(first);
+        if(vOrigin != null){
+            Graph<K> nGraph = new Graph<K>(this.directed);
+            this.getVertices().stream().forEach((v) -> {
+                nGraph.addVertice(v.getKey());
+            });
+
+            PriorityQueue<Edge<K>> queue = new PriorityQueue<>((Edge e1, Edge e2) -> Integer.compare(e1.getWeight(), e2.getWeight()));
+            int cont = 0;
+
+            while(cont < totalVertex){
+                for(Iterator<Edge<K>> it = vOrigin.getEdges().iterator(); it.hasNext();){
+                    Edge<K> edge = it.next();
+                    if(!edge.getEnd().isVisited()){
+                        queue.offer(edge);
+                    }
+                }
+                Edge<K> edge = queue.poll();
+                if(!edge.getEnd().isVisited()){
+                    edge.getEnd().setVisited(true);
+                    nGraph.addEdge(edge.getSource().getKey(), edge.getEnd().getKey(), edge.getWeight());
+                    cont++;
+                    vOrigin = edge.getEnd();
+                }
+            }
+            return nGraph;
+        }
+        return null;
+    }
+
     public void addVertice(K key){
         Vertice<K> v = new Vertice<>(key);
         vertices.add(v);
@@ -182,5 +217,45 @@ public class Graph<K>{
                 out = true;
             }
         }
+    }
+
+    public boolean isDirected() {
+        return directed;
+    }
+
+    public void setDirected(boolean directed) {
+        this.directed = directed;
+    }
+
+    public ArrayList<Vertice<K>> getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(ArrayList<Vertice<K>> vertices) {
+        this.vertices = vertices;
+    }
+
+    public ArrayList<Edge> getEdges() {
+        return edges;
+    }
+
+    public void setEdges(ArrayList<Edge> edges) {
+        this.edges = edges;
+    }
+
+    public static int[][] getDis() {
+        return dis;
+    }
+
+    public static void setDis(int[][] dis) {
+        Graph.dis = dis;
+    }
+
+    public static int[][] getNext() {
+        return next;
+    }
+
+    public static void setNext(int[][] next) {
+        Graph.next = next;
     }
 }

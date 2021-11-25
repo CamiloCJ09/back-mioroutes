@@ -7,11 +7,13 @@ public class Vertice<K> {
     private K key;
     private int value;
     private ArrayList<Edge<K>> edges;
+    private boolean visited;
 
     public Vertice(K key){
         this.key = key;
         //value = (int) key;
         edges = new ArrayList<Edge<K>>();
+        this.visited = false;
     }
 
     public K getKey() {
@@ -40,5 +42,21 @@ public class Vertice<K> {
             }
         }
         return sWeight;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
     }
 }

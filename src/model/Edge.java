@@ -6,6 +6,7 @@ public class Edge<K> {
     private Vertice<K> end;
     private int weight;
 
+
     public Edge(Vertice<K> source, Vertice<K> end, int weight){
         this.source = source;
         this.end = end;
