@@ -113,7 +113,8 @@ public class GraphTest {
     @Test
     void prim(){
         setup5();
-        graph.printPrim(graph.prim(1));
+        assertEquals(27,graph.printPrim(graph.prim(1)));
+
     }
 
 

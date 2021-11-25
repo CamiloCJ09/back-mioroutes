@@ -148,7 +148,7 @@ public class Graph<K>{
         return null;
     }
 
-    public void printPrim(Graph<K> graph){
+    public int printPrim(Graph<K> graph){
         int sum = 0;
         ArrayList<Integer> values = new ArrayList<>();
         for(Edge edge : graph.getEdges()){
@@ -160,6 +160,7 @@ public class Graph<K>{
             sum += a;
         }
         System.out.println(sum);
+        return sum;
     }
 
     public void addVertice(K key){
