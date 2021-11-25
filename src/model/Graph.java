@@ -67,4 +67,21 @@ public class Graph<K>{
         }
         return v;
     }
+
+
+    public void edit(K key ,K newValue){
+        Vertice<K> toEdit = searchVertice(key);
+        toEdit.setKey(newValue);
+    }
+
+    public void edit(K key ,int newValue, int oldValue){
+        Vertice<K> toEdit = searchVertice(key);
+        boolean out = false;
+        for (int i = 0; i < toEdit.getEdges().size() && !out; i++) {
+            if (toEdit.getEdges().get(i).getWeight() == oldValue){
+                toEdit.getEdges().get(i).setWeight(newValue);
+                out = true;
+            }
+        }
+    }
 }
