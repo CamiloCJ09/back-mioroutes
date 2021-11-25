@@ -148,6 +148,20 @@ public class Graph<K>{
         return null;
     }
 
+    public void printPrim(Graph<K> graph){
+        int sum = 0;
+        ArrayList<Integer> values = new ArrayList<>();
+        for(Edge edge : graph.getEdges()){
+            if(!values.contains(edge.getWeight())){
+                values.add(edge.getWeight());
+            }
+        }
+        for(int a : values){
+            sum += a;
+        }
+        System.out.println(sum);
+    }
+
     public void addVertice(K key){
         Vertice<K> v = new Vertice<>(key);
         vertices.add(v);

@@ -112,7 +112,8 @@ public class GraphTest {
 
     @Test
     void prim(){
-        setup3();
+        setup5();
+        graph.printPrim(graph.prim(1));
     }
 
 
