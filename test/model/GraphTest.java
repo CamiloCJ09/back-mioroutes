@@ -38,6 +38,23 @@ public class GraphTest {
         graph.addVertice(4);
     }
 
+    void setup5(){
+        this.graph = new Graph<>(false);
+        graph.addVertice(1);
+        graph.addVertice(2);
+        graph.addVertice(3);
+        graph.addVertice(4);
+        graph.addVertice(5);
+
+        graph.addEdge(1,2,15);
+        graph.addEdge(1,3,10);
+        graph.addEdge(3,4,6);
+        graph.addEdge(3,2,7);
+        graph.addEdge(4,2,11);
+        graph.addEdge(4,5,13);
+        graph.addEdge(2,5,4);
+    }
+
     @Test
     void addVertice1(){
         setup1();
