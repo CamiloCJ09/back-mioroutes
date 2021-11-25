@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class Vertice<K> {
 
     private K key;
-    private ArrayList<Edge> edges;
+    private int value;
+    private ArrayList<Edge<K>> edges;
 
     public Vertice(K key){
         this.key = key;
-        edges = new ArrayList<>();
+        //value = (int) key;
+        edges = new ArrayList<Edge<K>>();
     }
 
     public K getKey() {
@@ -20,11 +22,11 @@ public class Vertice<K> {
         this.key = key;
     }
 
-    public ArrayList<Edge> getEdges() {
+    public ArrayList<Edge<K>> getEdges() {
         return edges;
     }
 
-    public void setEdges(ArrayList<Edge> edges) {
+    public void setEdges(ArrayList<Edge<K>> edges) {
         this.edges = edges;
     }
 

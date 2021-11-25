@@ -38,6 +38,14 @@ public class GraphTest {
     }
 
     @Test
+    public void addVertice5(){
+        setup3();
+        graph.initialize();
+        graph.floydWarshall(4);
+        graph.printPath(graph.constructPath(1,3));
+    }
+
+    @Test
     void addVertice1(){
         setup1();
         graph.addVertice(1);
