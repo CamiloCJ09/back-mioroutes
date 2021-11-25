@@ -36,6 +36,7 @@ public class Vertice<K> {
         for(int i = 0; i<edges.size() && !found; i++){
             if(edges.get(i).getEnd().getKey() == endKey){
                 sWeight = edges.get(i).getWeight();
+                found = true;
             }
         }
         return sWeight;

@@ -75,12 +75,16 @@ public class Graph<K>{
         return path;
     }
 
-    public void printPath(Vector<Integer> path) {
+    public String printPath(Vector<Integer> path) {
+        String pathOut = "";
         int n = path.size();
         for(int i = 0; i < n - 1; i++) {
+            pathOut+=path.get(i) + " -> ";
             System.out.print(path.get(i) + " -> ");
         }
+            pathOut+=path.get(n-1);
             System.out.print(path.get(n - 1) + "\n");
+        return pathOut;
 
     }
 
@@ -161,5 +165,22 @@ public class Graph<K>{
             }
         }
         return v;
+    }
+
+
+    public void edit(K key ,K newValue){
+        Vertice<K> toEdit = searchVertice(key);
+        toEdit.setKey(newValue);
+    }
+
+    public void edit(K key ,int newValue, int oldValue){
+        Vertice<K> toEdit = searchVertice(key);
+        boolean out = false;
+        for (int i = 0; i < toEdit.getEdges().size() && !out; i++) {
+            if (toEdit.getEdges().get(i).getWeight() == oldValue){
+                toEdit.getEdges().get(i).setWeight(newValue);
+                out = true;
+            }
+        }
     }
 }

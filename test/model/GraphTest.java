@@ -1,6 +1,7 @@
 package model;
 
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class GraphTest {
 
@@ -38,53 +39,64 @@ public class GraphTest {
     }
 
     @Test
-    public void addVertice5(){
-        setup3();
-        graph.initialize();
-        graph.floydWarshall(4);
-        graph.printPath(graph.constructPath(1,3));
-    }
-
-    @Test
     void addVertice1(){
         setup1();
         graph.addVertice(1);
-        assert graph.existVertice(1);
+        assertTrue(graph.existVertice(1));
     }
 
     @Test
-    void addVertice2(){
+    void existVertice(){
         setup1();
         graph.addVertice(1);
         graph.addVertice(3);
-        assert !graph.existVertice(2);
+        assertFalse(graph.existVertice(2));
+
     }
 
     @Test
     void addEdge1(){
         setup2();
         graph.addEdge(1,2,5);
-        assert (graph.searchVertice(1).searchWeight(2) == 5);
+        assertEquals(5,graph.searchVertice(1).searchWeight(2));
     }
 
-    @Test
-    void addEdge2(){
-        setup2();
-        graph.addEdge(1,2,5);
-        assert (graph.searchVertice(2).searchWeight(1) == 5);
-    }
+
 
     @Test
     void addEdge3(){
         setup4();
         graph.addEdge(1,2,5);
-        assert (graph.searchVertice(1).searchWeight(2) == 5);
+        assertEquals(5,graph.searchVertice(1).searchWeight(2));
     }
 
     @Test
-    void addEdge4(){
-        setup4();
-        graph.addEdge(1,2,5);
-        assert (graph.searchVertice(2).searchWeight(1) == 0);
+    void edit1(){
+       setup3();
+       graph.edit(1,0);
+       assertFalse(graph.existVertice(1));
     }
+    @Test
+    void edit2(){
+        setup3();
+        graph.edit(1,20,10);
+        assertEquals(20,graph.searchVertice(1).searchWeight(3));
+
+    }
+
+    @Test
+    void floydWarShall(){
+        String path = "1 -> 0 -> 3";
+        setup3();
+        graph.initialize();
+        graph.floydWarshall(4);
+        assertEquals(path,graph.printPath(graph.constructPath(1,3)));
+    }
+
+    @Test
+    void prim(){
+        setup3();
+    }
+
+
 }
