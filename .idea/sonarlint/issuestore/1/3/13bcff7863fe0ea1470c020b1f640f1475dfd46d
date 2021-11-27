@@ -1,0 +1,70 @@
+
+E
+java:S3740"/Provide the parametrized type for this generic.(î˜ô…
+E
+java:S3740&"/Provide the parametrized type for this generic.(¿üŞ°
+F
+java:S3740€"/Provide the parametrized type for this generic.(»ğĞœ
+F
+java:S3740€"/Provide the parametrized type for this generic.(»ğĞœ
+K
+java:S3740š"/Provide the parametrized type for this generic.(àÜÇ¼üÿÿÿÿ
+F
+java:S3740ü"/Provide the parametrized type for this generic.(™Ÿûä
+K
+java:S3740€"/Provide the parametrized type for this generic.(Ğõõ‡øÿÿÿÿ
+{
+java:S1149B"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(ªìèÙ
+€
+java:S1149F"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(úÏÖúÿÿÿÿ
+{
+java:S1149P"eReplace the synchronized class "Vector" by an unsynchronized one such as "ArrayList" or "LinkedList".(ÊœÛÔ
+Q
+java:S2696"6Make the enclosing method "static" or remove this set.(ìŒŒûÿÿÿÿ
+Q
+java:S2696"6Make the enclosing method "static" or remove this set.(–‹ÿğøÿÿÿÿ
+m
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 24 to the 15 allowed.(·òşÿÿÿÿ
+L
+java:S2696 "6Make the enclosing method "static" or remove this set.(©óµ±
+L
+java:S2696""6Make the enclosing method "static" or remove this set.(ñÑô›
+<
+java:S1905)"&Remove this unnecessary cast to "int".(‡¨Òº
+L
+java:S2696*"6Make the enclosing method "static" or remove this set.(Ó²Æ
+<
+java:S1905*"&Remove this unnecessary cast to "int".(Ó²Æ
+L
+java:S26966"6Make the enclosing method "static" or remove this set.(éÏ¬©
+Q
+java:S2696:"6Make the enclosing method "static" or remove this set.(˜×¼˜úÿÿÿÿ
+A
+java:S1168D"+Return an empty collection instead of null.(¥¹ï
+L
+java:S2696k"6Make the enclosing method "static" or remove this set.(‡ıµü
+Q
+java:S2696l"6Make the enclosing method "static" or remove this set.(©¶ÛÖûÿÿÿÿ
+E
+java:S1611|"/Remove the parentheses around the "v" parameter(°‰÷³
+B
+java:S1602|",Remove useless curly braces around statement(°‰÷³
+E
+java:S1066)"/Merge this if statement with the enclosing one.(‡¨Òº
+†
+java:S1319ô"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ºûl
+„
+java:S1319ø"hThe type of "vertices" should be an interface such as "List" rather than the implementation "ArrayList".(â±×íüÿÿÿÿ
+‡
+java:S1319ü"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(™Ÿûä
+
+java:S1319€"eThe type of "edges" should be an interface such as "List" rather than the implementation "ArrayList".(Ğõõ‡øÿÿÿÿ
+f	java:S117]"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ôÓˆà
+2
+java:S1643T"Use a StringBuilder instead.(ê·÷Ü
+X
+java:S2259Á"AA "NullPointerException" could be thrown; "end" is nullable here.(˜´î
+`
+java:S2259À"DA "NullPointerException" could be thrown; "source" is nullable here.(ÈÊñ…úÿÿÿÿ
+[
+java:S2259º"DA "NullPointerException" could be thrown; "source" is nullable here.(¶Æ§–
