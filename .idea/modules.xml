@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/MIO-Routes.iml" filepath="$PROJECT_DIR$/.idea/MIO-Routes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/back-mioroutes.iml" filepath="$PROJECT_DIR$/back-mioroutes.iml" />
     </modules>
   </component>
 </project>
