@@ -5,6 +5,7 @@ public class Manager{
 
     private Graph graph;
     private int numOfStations;
+
     public Manager(){
         this.graph = new Graph(false);
         this.numOfStations = graph.getVertices().size();
