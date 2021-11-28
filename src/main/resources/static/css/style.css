@@ -1,0 +1,16 @@
+body{
+    background: rgb(255,254,169);
+    background: linear-gradient(0deg, rgba(255,254,169,1) 1%, rgba(218,217,146,1) 100%);
+}
+.selectField{
+    margin-top: 15px;
+
+}
+#what{
+    margin-right: 15px;
+}
+#searchButton{
+    margin-top: 10px;
+    border-radius: 5px;
+    background-color: cornflowerblue;
+}
