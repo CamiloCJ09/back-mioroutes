@@ -19,8 +19,6 @@ public class RouteDto {
         manager = new Manager();
     }
 
-
-
     public void createRoute(int initialPoint, int finalPoint){
          bestRoute = manager.bestRoute(initialPoint, finalPoint);
     }

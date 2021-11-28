@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Vertice<K> {
 
     private K key;
-    private int value;
+    private String value;
     private ArrayList<Edge<K>> edges;
     private boolean visited;
 
@@ -44,11 +44,11 @@ public class Vertice<K> {
         return sWeight;
     }
 
-    public int getValue() {
+    public String getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

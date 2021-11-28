@@ -1,16 +1,19 @@
 package service.implement;
-
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.CollectionReference;
+import com.google.cloud.firestore.DocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import dto.RouteDto;
+import dto.StationDto;
 import firebase.FirebaseInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 import service.RoutesManagementService;
-
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
@@ -40,6 +43,52 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
         return "";
     }
 
+    @Override
+    public List<StationDto> getStations() {
+        List<StationDto> response = new ArrayList<>();
+        StationDto post;
+        ApiFuture<QuerySnapshot> querySnapshotApiFuture = getCollection2().get();
+
+        try {
+            for (DocumentSnapshot doc:querySnapshotApiFuture.get().getDocuments()) {
+                System.out.println("a");
+                post = doc.toObject(StationDto.class);
+                post.setId(doc.getId());
+                response.add(post);
+            }
+
+            return response;
+        } catch (InterruptedException | ExecutionException e) {
+            System.out.println("null");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public boolean addStations() {
+        Map<String,Object> document = new HashMap<>();
+        for (int i = 0; i <dto.getManager().getGraph().getVertices().size() ; i++) {
+            document.put("name",dto.getManager().getGraph().getVertices().get(i).getValue());
+            document.put("value",dto.getManager().getGraph().getVertices().get(i).getKey());
+        }
+
+        CollectionReference post = getCollection2();
+        ApiFuture<WriteResult> writeResultApiFuture = post.document().create(document);
+        try {
+            if (null!=writeResultApiFuture.get()){
+                return true;
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return false;
+
+
+
+
+    }
+
     private Map<String,Object>getDocument() {
         Map<String,Object> dataDocument = new HashMap<>();
         dataDocument.put("best-route",dto.getBestRoute());
@@ -48,6 +97,10 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
     }
 
     private CollectionReference getCollection() {
-        return firebaseInitializer.getFireStore().collection("post");
+        return firebaseInitializer.getFireStore().collection("routes");
+    }
+
+    private CollectionReference getCollection2() {
+        return firebaseInitializer.getFireStore().collection("vertex");
     }
 }

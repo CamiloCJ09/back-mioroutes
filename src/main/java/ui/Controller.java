@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import service.RoutesManagementService;
 
 @RestController
-@RequestMapping(value = "/routes")
+@RequestMapping(value = { "/vertex","/routes"})
 @ComponentScan("service")
 public class Controller {
 
@@ -27,6 +27,20 @@ public class Controller {
         }
 
     }
+
+
+    @GetMapping(value = "/get")
+    public ResponseEntity getStations(){
+        return new ResponseEntity(service.getStations(), HttpStatus.OK);
+    }
+
+
+    @PostMapping(value = "/add")
+    public ResponseEntity addStation(){
+        return new ResponseEntity(service.addStations(),HttpStatus.OK);
+    }
+
+
 
 
 }
