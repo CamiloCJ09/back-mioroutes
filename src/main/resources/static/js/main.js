@@ -4,7 +4,7 @@ let elements = [1,2,3,4,5];
 let button = document.getElementById('searchButton');
 let select = document.querySelector('#what');
 let select2 = document.querySelector('#what2');
-
+let bestRoute = document.getElementById('bestRoute');
 
 
 for(let i = 0; i < 5; i++){
@@ -23,4 +23,5 @@ for(let i = 0; i < 5; i++){
 button.onclick = function(){
     //Add code to generate route
     console.log("Hola");
+    bestRoute.innerHTML = "La mejor ruta";
 }
