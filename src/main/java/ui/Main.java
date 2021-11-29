@@ -1,11 +1,12 @@
-package model;
+package ui;
+
+import model.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class Manager{
-    //Clase responsable de crear las rutas según con 2 nodos dados
+public class Main {
 
     private Graph<Integer> graph;
     private int numOfStations;
@@ -13,14 +14,13 @@ public class Manager{
     private File file;
     private static String FILE_ROUTE = "src/main/resources/static/data/graph.csv";
 
-    public Manager(){
-        this.graph = new Graph<>(false);
+    public Main() throws FileNotFoundException {
         this.file = new File(FILE_ROUTE);
-        try {
-            this.sc = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            System.out.println("Error creating graph");
-        }
+        this.sc = new Scanner(file);
+    }
+
+    public void importData(){
+        graph = new Graph<>(false);
         while(sc.hasNextLine()){
             String data = sc.nextLine();
             String[] splitData = data.split(";");
@@ -33,14 +33,10 @@ public class Manager{
             }
         }
         sc.close();
-        this.numOfStations = graph.getVertices().size();
-        graph.floydWarshall(numOfStations-1);
-    }
-    public String bestRoute(int initialPoint, int finalPoint){
-        return graph.printPath(graph.constructPath(initialPoint, finalPoint));
     }
 
-    public Graph<Integer>getGraph() {
-        return graph;
+    public static void main(String[] args) throws FileNotFoundException {
+        Main main = new Main();
+        main.importData();
     }
 }

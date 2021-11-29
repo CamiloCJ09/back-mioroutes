@@ -16,6 +16,13 @@ public class Vertice<K> {
         this.visited = false;
     }
 
+    public Vertice(K key, String value){
+        this.key = key;
+        this.value = value;
+        edges = new ArrayList<Edge<K>>();
+        this.visited = false;
+    }
+
     public K getKey() {
         return key;
     }
