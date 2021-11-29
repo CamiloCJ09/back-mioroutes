@@ -1,4 +1,5 @@
 
+
 //Variables
 let elements = [1,2,3,4,5];
 let button = document.getElementById('searchButton');
@@ -24,3 +25,4 @@ button.onclick = function(){
     //Add code to generate route
     console.log("Hola");
 }
+

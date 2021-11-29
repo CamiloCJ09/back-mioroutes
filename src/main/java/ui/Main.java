@@ -1,5 +1,6 @@
 package ui;
 
+import dto.RouteDto;
 import model.*;
 
 import java.io.File;
@@ -8,6 +9,7 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static RouteDto routeDto;
     private Graph<Integer> graph;
     private int numOfStations;
     private Scanner sc;
@@ -37,6 +39,8 @@ public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         Main main = new Main();
-        main.importData();
+        //main.importData();
+
+
     }
 }

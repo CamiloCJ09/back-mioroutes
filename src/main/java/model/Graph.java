@@ -94,14 +94,12 @@ public class Graph<K>{
         for(int k = 0; k < V; k++) {
             for(int i = 0; i < V; i++) {
                 for(int j = 0; j < V; j++) {
-
                     // We cannot travel through
                     // edge that doesn't exist
                     if (dis[i][k] == Integer.MAX_VALUE || dis[k][j] == Integer.MAX_VALUE) {
                         System.out.println("Entra aquí");
                         continue;
                     }
-
                     //System.out.println("Dis en i: "+i +" j "+j+" k "+k+" = "+dis[i][j] + " "+ dis[i][k]+ " "+dis[k][j] );
                     if (dis[i][j] > dis[i][k] + dis[k][j]) {
                         dis[i][j] = dis[i][k] + dis[k][j];
