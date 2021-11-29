@@ -168,6 +168,11 @@ public class Graph<K>{
         vertices.add(v);
     }
 
+    public void addVertice(K key, String value){
+        Vertice<K> v = new Vertice<>(key, value);
+        vertices.add(v);
+    }
+
     public void addEdge(K sourceKey, K endKey, int weight){
         Vertice<K> source = null;
         Vertice<K> end = null;
