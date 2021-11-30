@@ -11,7 +11,7 @@ public class Manager{
     private int numOfStations;
     private Scanner sc;
     private File file;
-    private static String FILE_ROUTE = "src/main/resources/static/data/graph.csv";
+    private static String FILE_ROUTE = "src/main/resources/static/data/graph2.csv";
 
     public Manager(){
         this.graph = new Graph<>(false);
