@@ -34,6 +34,7 @@ public class Manager{
         }
         sc.close();
         this.numOfStations = graph.getVertices().size();
+        getGraph().initialize();
         graph.floydWarshall(numOfStations-1);
     }
     public String bestRoute(int initialPoint, int finalPoint){

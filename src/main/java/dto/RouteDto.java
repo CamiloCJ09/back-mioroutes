@@ -1,6 +1,7 @@
 package dto;
 
 import model.Manager;
+import org.springframework.stereotype.Service;
 
 
 /*
@@ -8,6 +9,7 @@ import model.Manager;
      y generar el objeto que se va a guardar en la base de datos. Esta clase será
      la conexion del backend con el frontEnd
      */
+//@Service
 public class RouteDto {
     private Manager manager;
     private String id;

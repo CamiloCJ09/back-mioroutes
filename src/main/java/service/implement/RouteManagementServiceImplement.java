@@ -18,13 +18,14 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
-@ComponentScan("firebase")
+@ComponentScan({"firebase"})
 public class RouteManagementServiceImplement implements RoutesManagementService {
 
     @Autowired
     private FirebaseInitializer firebaseInitializer;
 
-    private RouteDto dto = new RouteDto();
+    //@Autowired
+    private RouteDto dto = new RouteDto() ;
 
     @Override
     public String calculateRoute(int initialPoint, int finalPoint) {
