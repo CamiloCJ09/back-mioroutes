@@ -2,18 +2,14 @@
 
 //Variables
 let elements = [1,2,3,4,5];
+let fullWeight = document.getElementById('findWeight');
 let button = document.getElementById('searchButton');
 let select = document.querySelector('#what');
 let select2 = document.querySelector('#what2');
 let bestRoute = document.getElementById('bestRoute');
 
 
-for(let i = 0; i < 5; i++){
-    let opt1 = document.createElement("option");
-    opt1.value = elements[i].toString();
-    opt1.text = elements[i].toString();
-    select.add(opt1);
-}
+
 /*
 for(let i = 0; i < 5; i++){
     let opt2 = document.createElement("option");
@@ -26,7 +22,11 @@ for(let i = 0; i < 5; i++){
 button.onclick = function(){
     //Add code to generate route
     console.log("Hola");
-    bestRoute.innerHTML = "La mejor ruta";
+    bestRoute.innerHTML = "La mejor ruta: ";
+}
+fullWeight.onclick = function(){
+    console.log("Khe");
+    bestRoute.innerHTML = "El costo total es: ";
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -52,6 +52,12 @@ async function getData(){
         select2.add(opt3);
     }
 
+    for (let route of routes) {
+        let opt2 = document.createElement("option");
+        opt2.value = route.value;
+        opt2.text = route.name;
+        select.add(opt2);
+    }
     //document.querySelector("#tablePlayers tbody").outerHTML = listHtml
 }
 
