@@ -1,7 +1,7 @@
 
 
 //Variables
-let elements = [1,2,3,4,5];
+let generalRoutes = [];
 let fullWeight = document.getElementById('findWeight');
 let button = document.getElementById('searchButton');
 let select = document.querySelector('#what');
@@ -22,7 +22,7 @@ for(let i = 0; i < 5; i++){
 button.onclick = function(){
     //Add code to generate route
     console.log("Hola");
-    bestRoute.innerHTML = "La mejor ruta: ";
+    calculateBestRoute().then(r => bestRoute.innerHTML = "La mejor ruta: ");
 }
 fullWeight.onclick = function(){
     console.log("Khe");
@@ -57,7 +57,32 @@ async function getData(){
         opt2.value = route.value;
         opt2.text = route.name;
         select.add(opt2);
+        generalRoutes.push(route);
     }
-    //document.querySelector("#tablePlayers tbody").outerHTML = listHtml
 }
+
+async function calculateBestRoute() {
+    let value1 = select.value;
+    let value2 = select2.value;
+    const request = await fetch('routes/calculate/'+value1+'/'+value2,{
+        method: 'PUT',
+        headers: {
+            'Content-Type':'application/json'
+        },
+        body: JSON.stringify(value1,value2)
+    })
+    const request2 = await fetch('routes/calculate/'+value1+'/'+value2,{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+
+    });
+    const routes = await request.json();
+    const calc = await request.json();
+
+    console.log(routes);
+}
+
 

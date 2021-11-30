@@ -17,7 +17,7 @@ public class Controller {
     private RoutesManagementService service;
 
     //Floyd
-    @PutMapping (value = "/calculate/{initialPoint}/{finalPoint}")
+    @PutMapping (value = "calculate/{initialPoint}/{finalPoint}")
     public ResponseEntity calculateBestRoute(@PathVariable String finalPoint, @PathVariable String initialPoint){
         try {
             int firtspoint = Integer.parseInt(initialPoint);
