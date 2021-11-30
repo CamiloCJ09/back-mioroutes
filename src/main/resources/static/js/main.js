@@ -80,8 +80,25 @@ async function calculateBestRoute() {
 
     });
     const calc = await request.json();
-
     const routes = await request2.json();
 
+
+    let bestR = routes.bestRoute.toString();
+    let vert = bestR.split(',');
+    let answ = "";
+    console.log(vert);
+    vert.forEach(function(vert){
+        generalRoutes.forEach(function(rt){
+            //console.log(vert+"hi");
+            //console.log(rt.value+"Lo");
+            if(vert==rt.value){
+                console.log(rt.value);
+                answ += (rt.name+",");
+            }
+        })
+    })
+
+    console.log(answ);
     console.log(routes);
+    console.log(generalRoutes);
 }
