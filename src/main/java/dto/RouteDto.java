@@ -12,7 +12,6 @@ public class RouteDto {
     private Manager manager;
     private String id;
     private String bestRoute;
-    private String cost;
 
 
     public RouteDto(){
@@ -47,13 +46,7 @@ public class RouteDto {
         this.bestRoute = bestRoute;
     }
 
-    public String getCost() {
-        return cost;
-    }
 
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
 
 
 

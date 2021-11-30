@@ -4,6 +4,8 @@ import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
+import dto.BestCostDto;
+import dto.BestRouteDto;
 import dto.RouteDto;
 import dto.StationDto;
 import firebase.FirebaseInitializer;
@@ -109,38 +111,43 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
     }
 
     @Override
-    public RouteDto getBestRoute() {
-        RouteDto dt0 = null;
-
-        ApiFuture<QuerySnapshot> querySnapshotApiFuture = getCollection().get();
+    public BestRouteDto getBestRoute() {
+       BestRouteDto dto = null;
+       ApiFuture<QuerySnapshot> querySnapshotApiFuture = getCollection().get();
         try {
-            dt0 = querySnapshotApiFuture.get().getDocuments().get(0).toObject(RouteDto.class);
+            DocumentSnapshot documentSnapshot = querySnapshotApiFuture.get().getDocuments().get(0);
+            dto = documentSnapshot.toObject(BestRouteDto.class);
+            dto.setId(documentSnapshot.getId());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
 
-        return dt0;
+        return dto;
     }
 
     @Override
-    public RouteDto getBestcostOfAllCity() {
-        RouteDto dt0All = null;
+    public BestCostDto getBestcostOfAllCity() {
+        BestCostDto bestCostDto = null;
 
-        ApiFuture<QuerySnapshot> querySnapshotApiFuture = firebaseInitializer.getFireStore().collection("routAll").get();
+        ApiFuture<QuerySnapshot> querySnapshotApiFuture = firebaseInitializer.getFireStore().collection("routeAll").get();
         try {
-            dt0All = querySnapshotApiFuture.get().getDocuments().get(0).toObject(RouteDto.class);
+            DocumentSnapshot documentSnapshot = querySnapshotApiFuture.get().getDocuments().get(0);
+            bestCostDto = documentSnapshot.toObject(BestCostDto.class);
+            bestCostDto.setId(documentSnapshot.getId());
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
+        return bestCostDto;
 
-        return dt0All;
+
+
     }
 
     private Map<String,Object>getDocument() {
         Map<String,Object> dataDocument = new HashMap<>();
-        dataDocument.put("best-route",dto.getBestRoute());
+        dataDocument.put("bestRoute",dto.getBestRoute());
         return dataDocument;
     }
 
