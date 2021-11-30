@@ -25,4 +25,3 @@ button.onclick = function(){
     //Add code to generate route
     console.log("Hola");
 }
-

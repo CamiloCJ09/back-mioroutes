@@ -1,6 +1,5 @@
 body{
-    background: rgb(255,254,169);
-    background: linear-gradient(0deg, rgba(255,254,169,1) 1%, rgba(218,217,146,1) 100%);
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,152,155,1) 0.1%, rgba(0,94,120,1) 94.2% );
 }
 .selectField{
     margin-top: 15px;
@@ -14,3 +13,30 @@ body{
     border-radius: 5px;
     background-color: cornflowerblue;
 }
+img{
+    border: black;
+    border-radius: 20px;
+}
+
+
+.btn-grad {background-image: linear-gradient(to right, #348F50 0%, #56B4D3  51%, #348F50  100%)}
+.btn-grad {
+    margin: 0 auto;
+    padding: 10px 40px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: black;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+
+}
+
+.btn-grad:hover {
+    background-position: right center; /* change the direction of the change here */
+    color: #fff;
+    text-decoration: none;
+}
+

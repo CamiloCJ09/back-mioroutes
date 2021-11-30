@@ -108,6 +108,36 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
         return false;
     }
 
+    @Override
+    public RouteDto getBestRoute() {
+        RouteDto dt0 = null;
+
+        ApiFuture<QuerySnapshot> querySnapshotApiFuture = getCollection().get();
+        try {
+            dt0 = querySnapshotApiFuture.get().getDocuments().get(0).toObject(RouteDto.class);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        return dt0;
+    }
+
+    @Override
+    public RouteDto getBestcostOfAllCity() {
+        RouteDto dt0All = null;
+
+        ApiFuture<QuerySnapshot> querySnapshotApiFuture = firebaseInitializer.getFireStore().collection("routAll").get();
+        try {
+            dt0All = querySnapshotApiFuture.get().getDocuments().get(0).toObject(RouteDto.class);
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+
+        return dt0All;
+    }
+
     private Map<String,Object>getDocument() {
         Map<String,Object> dataDocument = new HashMap<>();
         dataDocument.put("best-route",dto.getBestRoute());

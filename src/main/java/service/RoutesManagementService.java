@@ -1,5 +1,6 @@
 package service;
 
+import dto.RouteDto;
 import dto.StationDto;
 
 import java.util.List;
@@ -15,6 +16,9 @@ public interface RoutesManagementService {
 
    boolean costOfAllCity(int initialPoint);
 
+   RouteDto getBestRoute();
+
+   RouteDto getBestcostOfAllCity();
 
 
 
