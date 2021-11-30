@@ -4,7 +4,7 @@ package dto;
 public class StationDto {
     private String id;
     private String name;
-    private int value;
+    private long value;
 
     public StationDto() {
 
@@ -26,11 +26,11 @@ public class StationDto {
         this.name = name;
     }
 
-    public int getValue() {
+    public long getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(long value) {
         this.value = value;
     }
 }

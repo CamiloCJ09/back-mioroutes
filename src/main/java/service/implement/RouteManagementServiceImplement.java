@@ -52,7 +52,6 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
 
         try {
             for (DocumentSnapshot doc:querySnapshotApiFuture.get().getDocuments()) {
-                System.out.println("a");
                 post = doc.toObject(StationDto.class);
                 post.setId(doc.getId());
                 response.add(post);
@@ -69,21 +68,23 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
     @Override
     public boolean addStations() {
         Map<String,Object> document = new HashMap<>();
+        ApiFuture<WriteResult> writeResultApiFuture = null;
+        boolean finished = false;
         for (int i = 0; i <dto.getManager().getGraph().getVertices().size() ; i++) {
             document.put("name",dto.getManager().getGraph().getVertices().get(i).getValue());
-            document.put("value",dto.getManager().getGraph().getVertices().get(i).getKey());
+            document.put("value", dto.getManager().getGraph().getVertices().get(i).getKey());
+            CollectionReference post = getCollection2();
+            writeResultApiFuture = post.document().create(document);
+            try {
+                if(writeResultApiFuture.get()!=null){
+                    finished = true;
+                }
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
         }
 
-        CollectionReference post = getCollection2();
-        ApiFuture<WriteResult> writeResultApiFuture = post.document().create(document);
-        try {
-            if (null!=writeResultApiFuture.get()){
-                return true;
-            }
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-        return false;
+        return finished;
 
 
 
