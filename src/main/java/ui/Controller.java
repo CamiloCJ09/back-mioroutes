@@ -30,10 +30,9 @@ public class Controller {
     }
 
     //Prim
-    @PutMapping(value = "allCity/{initialPoint}")
+    @PutMapping(value = "allCity/")
     public ResponseEntity costOfAllCity(@PathVariable String initialPoint){
-        int first = Integer.parseInt(initialPoint);
-        return new ResponseEntity(service.costOfAllCity(first),HttpStatus.OK);
+        return new ResponseEntity(service.costOfAllCity(0),HttpStatus.OK);
     }
 
 
