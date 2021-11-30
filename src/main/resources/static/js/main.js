@@ -71,7 +71,7 @@ async function calculateBestRoute() {
         },
         body: JSON.stringify(value1,value2)
     })
-    const request2 = await fetch('routes/calculate/'+value1+'/'+value2,{
+    const request2 = await fetch('routes/getBestRoute',{
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -79,10 +79,9 @@ async function calculateBestRoute() {
         },
 
     });
-    const routes = await request.json();
     const calc = await request.json();
+
+    const routes = await request2.json();
 
     console.log(routes);
 }
-
-

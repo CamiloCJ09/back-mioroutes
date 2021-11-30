@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import service.RoutesManagementService;
 
 @RestController
-@RequestMapping(value = { "/vertex","/routes"})
+@RequestMapping(value = { "/vertex","/routes","/routeAll"})
 @ComponentScan("service")
 public class Controller {
 
@@ -46,6 +46,18 @@ public class Controller {
     @PostMapping(value = "/add")
     public ResponseEntity addStation(){
         return new ResponseEntity(service.addStations(),HttpStatus.OK);
+    }
+
+    //routes/getBestRoute
+    @GetMapping(value = "/getBestRoute")
+    public ResponseEntity getBestRoute(){
+        return new ResponseEntity(service.getBestRoute(),HttpStatus.OK);
+    }
+
+    //routeAll/getBestCostAllCity
+    @GetMapping(value = "/getBestCostAllCity")
+    public ResponseEntity getBestCost(){
+        return new ResponseEntity(service.getBestcostOfAllCity(),HttpStatus.OK);
     }
 
 
