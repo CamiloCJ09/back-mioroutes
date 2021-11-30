@@ -38,8 +38,8 @@ public class Graph<K>{
         for(Vertice vertex : vertices){
             for(int i = 0; i < vertex.getEdges().size(); i++){
                 if(vertex.getEdges().get(i) instanceof Edge){
-                    if((((Edge<?>) vertex.getEdges().get(i)).getWeight()) < (dis[(int)vertex.getKey()-1][(int) ( (Edge<Integer>)vertex.getEdges().get(i)).getEnd().getKey()-1])){
-                        dis[(int)vertex.getKey()-1][(int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()-1] = (((Edge<?>) vertex.getEdges().get(i)).getWeight());
+                    if((((Edge<?>) vertex.getEdges().get(i)).getWeight()) < (dis[(int)vertex.getKey()][(int) ( (Edge<Integer>)vertex.getEdges().get(i)).getEnd().getKey()])){
+                        dis[(int)vertex.getKey()][(int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()] = (((Edge<?>) vertex.getEdges().get(i)).getWeight());
                     }
                     //System.out.println((int)vertex.getKey()-1 + " , "+ ((int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()-1));
                     //System.out.println(dis[(int)vertex.getKey()-1][(int) ((Edge<Integer>) vertex.getEdges().get(i)).getEnd().getKey()-1]);
