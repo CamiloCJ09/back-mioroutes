@@ -81,10 +81,10 @@ public class Graph<K>{
         String pathOut = "";
         int n = path.size();
         for(int i = 0; i < n - 1; i++) {
-            pathOut+=path.get(i) + " -> ";
-            System.out.print(path.get(i) + " -> ");
+            pathOut+=(path.get(i)) + ",";
+            System.out.print(path.get(i) + ",");
         }
-            pathOut+=path.get(n-1);
+            pathOut+=(path.get(n-1));
             System.out.print(path.get(n - 1) + "\n");
         return pathOut;
 
