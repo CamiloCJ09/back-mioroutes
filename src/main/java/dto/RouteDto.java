@@ -1,8 +1,6 @@
 package dto;
 
 import model.Manager;
-import org.springframework.stereotype.Service;
-
 
 /*
      Esta clase es la que se va a encargar de guardar la informacion de las rutas

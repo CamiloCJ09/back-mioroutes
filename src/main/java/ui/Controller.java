@@ -16,7 +16,8 @@ public class Controller {
     @Autowired
     private RoutesManagementService service;
 
-    @PostMapping(value = "/calculate/{initialPoint}{finalPoint}")
+    //Floyd
+    @PutMapping (value = "/calculate/{initialPoint}/{finalPoint}")
     public ResponseEntity calculateBestRoute(@PathVariable String finalPoint, @PathVariable String initialPoint){
         try {
             int firtspoint = Integer.parseInt(initialPoint);
@@ -26,6 +27,13 @@ public class Controller {
             return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    //Prim
+    @PutMapping(value = "allCity/{initialPoint}")
+    public ResponseEntity costOfAllCity(@PathVariable String initialPoint){
+        int first = Integer.parseInt(initialPoint);
+        return new ResponseEntity(service.costOfAllCity(first),HttpStatus.OK);
     }
 
 
