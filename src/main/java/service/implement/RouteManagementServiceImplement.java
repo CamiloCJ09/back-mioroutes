@@ -26,22 +26,23 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
 
     //@Autowired
     private RouteDto dto = new RouteDto() ;
+    private static final String ID = "nEj6euolxpv8t1mzMpFT";
+
 
     @Override
-    public String calculateRoute(int initialPoint, int finalPoint) {
+    public boolean calculateRoute(int initialPoint, int finalPoint) {
         dto.createRoute(initialPoint,finalPoint);
         Map<String,Object> document = getDocument();
         CollectionReference post = getCollection();
-        ApiFuture<WriteResult> writeResultApiFuture = post.document().create(document);
+        ApiFuture<WriteResult> writeResultApiFuture = post.document(ID).set(document);
         try {
             if (null!=writeResultApiFuture.get()){
-                return "Mejor ruta: "+dto.getBestRoute()+"\n"+
-                        "Costo: "+dto.getCost();
+                return true;
             }
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
-        return "";
+        return false;
     }
 
     @Override
@@ -91,10 +92,25 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
 
     }
 
+    @Override
+    public boolean costOfAllCity(int initialPoint) {
+        Map<String,Object> document = new HashMap<>();
+        document.put("totalCost",dto.getManager().getGraph().printPrim(dto.getManager().getGraph().prim(initialPoint)));
+        CollectionReference post = getCollection();
+        ApiFuture<WriteResult> writeResultApiFuture = post.document("allCali").set(document);
+        try {
+            if (null!=writeResultApiFuture.get()){
+                return true;
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private Map<String,Object>getDocument() {
         Map<String,Object> dataDocument = new HashMap<>();
         dataDocument.put("best-route",dto.getBestRoute());
-        dataDocument.put("cost",dto.getCost());
         return dataDocument;
     }
 
