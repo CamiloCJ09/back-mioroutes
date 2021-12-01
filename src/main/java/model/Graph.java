@@ -97,7 +97,7 @@ public class Graph<K>{
                     // We cannot travel through
                     // edge that doesn't exist
                     if (dis[i][k] == Integer.MAX_VALUE || dis[k][j] == Integer.MAX_VALUE) {
-                        System.out.println("Entra aquí");
+                        //System.out.println("Entra aquí");
                         continue;
                     }
                     //System.out.println("Dis en i: "+i +" j "+j+" k "+k+" = "+dis[i][j] + " "+ dis[i][k]+ " "+dis[k][j] );
@@ -135,6 +135,7 @@ public class Graph<K>{
                 }
                 Edge<K> edge = queue.poll();
                 if(!edge.getEnd().isVisited()){
+                    System.out.println("Entra");
                     edge.getEnd().setVisited(true);
                     nGraph.addEdge(edge.getSource().getKey(), edge.getEnd().getKey(), edge.getWeight());
                     cont++;
