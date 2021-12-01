@@ -21,13 +21,13 @@ public class GraphTest {
 
     void setup3(){
         this.graph = new Graph<>(false);
+        graph.addVertice(0);
         graph.addVertice(1);
         graph.addVertice(2);
         graph.addVertice(3);
-        graph.addVertice(4);
-        graph.addEdge(1,2,5);
-        graph.addEdge(1,3,10);
-        graph.addEdge(1,4,6);
+        graph.addEdge(0,1,5);
+        graph.addEdge(0,2,10);
+        graph.addEdge(0,3,6);
     }
 
     void setup4(){
@@ -96,14 +96,14 @@ public class GraphTest {
     @Test
     void edit2(){
         setup3();
-        graph.edit(1,20,10);
-        assertEquals(20,graph.searchVertice(1).searchWeight(3));
+        graph.edit(0,20,10);
+        assertEquals(20,graph.searchVertice(0).searchWeight(2));
 
     }
 
     @Test
     void floydWarShall(){
-        String path = "1 -> 0 -> 3";
+        String path = "1,0,3";
         setup3();
         graph.initialize();
         graph.floydWarshall(4);

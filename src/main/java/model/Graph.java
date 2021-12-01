@@ -1,9 +1,6 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.PriorityQueue;
-import java.util.Vector;
+import java.util.*;
 
 public class Graph<K>{
 
@@ -97,7 +94,6 @@ public class Graph<K>{
                     // We cannot travel through
                     // edge that doesn't exist
                     if (dis[i][k] == Integer.MAX_VALUE || dis[k][j] == Integer.MAX_VALUE) {
-                        //System.out.println("Entra aquí");
                         continue;
                     }
                     //System.out.println("Dis en i: "+i +" j "+j+" k "+k+" = "+dis[i][j] + " "+ dis[i][k]+ " "+dis[k][j] );
@@ -148,16 +144,27 @@ public class Graph<K>{
     public int printPrim(Graph<K> graph){
         int sum = 0;
         ArrayList<Integer> values = new ArrayList<>();
-        for(Edge edge : graph.getEdges()){
-            if(!values.contains(edge.getWeight())){
-                values.add(edge.getWeight());
+        ArrayList<Edge> cEdges = new ArrayList<>(graph.getEdges());
+        if(directed == false){
+            for(int i = 0; i<cEdges.size(); i++){
+                for(int j = 0; j<cEdges.size(); j++){
+                    if((cEdges.get(i).getSource() == cEdges.get(j).getEnd()) && (cEdges.get(i).getEnd() == cEdges.get(j).getSource())){
+                        cEdges.remove(j);
+                    }
+                }
             }
         }
+        for(Edge e : cEdges){
+            values.add(e.getWeight());
+        }
+        System.out.println("Tamaño"+values.size());
+        values.remove(0);
         for(int a : values){
+            System.out.println(a);
             sum += a;
         }
         System.out.println(sum);
-        return sum;
+        return (sum);
     }
 
     public void addVertice(K key){
