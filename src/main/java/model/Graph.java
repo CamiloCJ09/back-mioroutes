@@ -122,10 +122,8 @@ public class Graph<K>{
             this.getVertices().stream().forEach((v) -> {
                 nGraph.addVertice(v.getKey());
             });
-
             PriorityQueue<Edge<K>> queue = new PriorityQueue<>((Edge e1, Edge e2) -> Integer.compare(e1.getWeight(), e2.getWeight()));
             int cont = 0;
-
             while(cont < totalVertex){
                 for(Iterator<Edge<K>> it = vOrigin.getEdges().iterator(); it.hasNext();){
                     Edge<K> edge = it.next();
