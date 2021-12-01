@@ -97,7 +97,7 @@ async function calculateBestRoute() {
             }
         })
     })
-
+    answ
     console.log(answ);
     console.log(routes);
     console.log(generalRoutes);
