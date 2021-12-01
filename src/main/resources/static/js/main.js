@@ -79,7 +79,7 @@ async function getAllWeight() {
     const calc = await request.json();
     const calc2 = await request2.json();
 
-    bestRoute.innerHTML = "El costo total es: "+calc2.totalCost.toString();
+    bestRoute.innerHTML = "El costo total en km es: "+calc2.totalCost.toString();
 }
 
 async function calculateBestRoute() {
