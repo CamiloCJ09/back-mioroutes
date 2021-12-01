@@ -98,7 +98,7 @@ public class RouteManagementServiceImplement implements RoutesManagementService 
     public boolean costOfAllCity(int initialPoint) {
         Map<String,Object> document = new HashMap<>();
         document.put("totalCost",dto.getManager().getGraph().printPrim(dto.getManager().getGraph().prim(initialPoint)));
-        CollectionReference post = getCollection();
+        CollectionReference post = firebaseInitializer.getFireStore().collection("routeAll");
         ApiFuture<WriteResult> writeResultApiFuture = post.document("allCali").set(document);
         try {
             if (null!=writeResultApiFuture.get()){
