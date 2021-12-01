@@ -25,10 +25,8 @@ public class Manager{
             String data = sc.nextLine();
             String[] splitData = data.split(";");
             if(splitData[0].equals("0")){
-                System.out.println("Añado a: "+splitData[1]);
                 graph.addVertice(Integer.valueOf(splitData[2]),splitData[1]);
             }else{
-                System.out.println("Creo camino entre: "+splitData[1]+" y "+splitData[2]);
                 graph.addEdge(Integer.valueOf(splitData[1]),Integer.valueOf(splitData[2]),1);
             }
         }

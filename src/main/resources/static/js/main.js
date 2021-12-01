@@ -22,11 +22,11 @@ for(let i = 0; i < 5; i++){
 button.onclick = function(){
     //Add code to generate route
     console.log("Hola");
-    calculateBestRoute().then(r => bestRoute.innerHTML = "La mejor ruta: ");
+    calculateBestRoute();
 }
 fullWeight.onclick = function(){
     console.log("Khe");
-    bestRoute.innerHTML = "El costo total es: ";
+    getAllWeight();
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -59,6 +59,27 @@ async function getData(){
         select.add(opt2);
         generalRoutes.push(route);
     }
+}
+
+async function getAllWeight() {
+    const request = await fetch('routeAll/allCity',{
+        method: 'PUT',
+        headers: {
+            'Content-Type':'application/json'
+        },
+    })
+    const request2 = await fetch('routeAll/getBestCostAllCity',{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+
+    });
+    const calc = await request.json();
+    const calc2 = await request2.json();
+
+    bestRoute.innerHTML = "El costo total es: "+calc2.totalCost.toString();
 }
 
 async function calculateBestRoute() {
@@ -98,6 +119,8 @@ async function calculateBestRoute() {
         })
     })
 
+    answ = answ.substr(0,answ.length-1);
+    bestRoute.innerHTML = "La mejor ruta es: "+answ+".";
     console.log(answ);
     console.log(routes);
     console.log(generalRoutes);

@@ -97,7 +97,6 @@ public class Graph<K>{
                     // We cannot travel through
                     // edge that doesn't exist
                     if (dis[i][k] == Integer.MAX_VALUE || dis[k][j] == Integer.MAX_VALUE) {
-                        System.out.println("Entra aquí");
                         continue;
                     }
                     //System.out.println("Dis en i: "+i +" j "+j+" k "+k+" = "+dis[i][j] + " "+ dis[i][k]+ " "+dis[k][j] );
@@ -115,6 +114,16 @@ public class Graph<K>{
 
 
     public Graph<K> prim(K first){
+        if(directed == false){
+            ArrayList<Edge> cEdges = new ArrayList<>(edges);
+            for(int i = 0; i<cEdges.size(); i++){
+                for(int j = 0; j<cEdges.size(); j++){
+                    if((cEdges.get(i).getSource() == cEdges.get(j).getEnd()) && (cEdges.get(i).getEnd() == cEdges.get(j).getSource())){
+                        cEdges.remove(j);
+                    }
+                }
+            }
+        }
         int totalVertex = vertices.size();
         Vertice<K> vOrigin = this.searchVertice(first);
         if(vOrigin != null){
