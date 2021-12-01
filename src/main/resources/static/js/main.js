@@ -118,10 +118,6 @@ async function calculateBestRoute() {
             }
         })
     })
-
     answ = answ.substr(0,answ.length-1);
     bestRoute.innerHTML = "La mejor ruta es: "+answ+".";
-    console.log(answ);
-    console.log(routes);
-    console.log(generalRoutes);
 }
